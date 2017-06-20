@@ -4,6 +4,14 @@ This repository holds the front end of the Hoola webapp and is built with Angula
 
 The server of this web application can be found at: https://github.com/johnwu10/hoola-server
 
+## Prerequisites
+
+Install angular-cli globally. Example using npm:
+
+```
+npm install -g angular-cli
+```
+
 ## To build application
 
 ```
