@@ -6,18 +6,22 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarComponent } from './main/sidebar/sidebar.component';
+import { NavbarComponent } from './main/shared/navbar/navbar.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
 
-import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardModule } from './main/dashboard/dashboard.module';
+import { MainComponent } from './main/main.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    MainComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

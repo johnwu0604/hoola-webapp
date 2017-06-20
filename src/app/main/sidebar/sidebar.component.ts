@@ -3,8 +3,8 @@ import { ROUTES } from './sidebar-routes.config';
 
 @Component({
   selector: 'sidebar-cmp',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  templateUrl: 'sidebar.component.html',
+  styleUrls: ['sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
 
