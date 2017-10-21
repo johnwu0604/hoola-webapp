@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map'
 
 @Injectable()
@@ -7,11 +7,19 @@ export class AuthenticationService {
   constructor(private http: Http) { }
 
   login(email: string, password: string) {
-    return this.http.post('localhost:5000/login', JSON.stringify({ email: email, password: password }))
+
+    let body = JSON.stringify({ 'email': email, 'password': password})
+    let headers = new Headers({ 'Content-Type': 'application/json'})
+    let options = new RequestOptions({ headers: headers, withCredentials: true })
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/login'
+
+    return this.http.post(url, body, options )
       .map((response: Response) => {
-        let user = response.json();
-        return user;
-      });
+        let result = response.json()
+        return result
+      })
+
   }
+
 
 }
