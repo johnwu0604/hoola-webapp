@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User }    from '../model/user';
 import { AuthenticationService } from '../service/authentication.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   model: any = {}
-  submitted = false
+  public errorMessage: string = ""
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -19,23 +18,26 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.logout()
   }
 
   onSubmit() {
-    this.submitted = true;
     this.authenticationService.login(this.model.email, this.model.password)
       .subscribe(
         result => {
-          console.log(result.user)
-          this.router.navigateByUrl('/main');
+          if (result.login_success) {
+            this.router.navigateByUrl('/main');
+          } else {
+            this.errorMessage = "Invalid email or password. Please try again."
+          }
         },
         error => {
           console.log(error)
-        });
+        })
   }
 
-  // newUser() {
-  //   this.model = new User('john', '')
-  // }
+  logout() {
+    this.authenticationService.logout()
+  }
+
 }

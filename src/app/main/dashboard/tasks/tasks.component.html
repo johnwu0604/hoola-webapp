@@ -1,5 +1,10 @@
 <div class="main-content">
   <div class="container-fluid">
+    <li *ngFor="let task of tasks">
+        <p>{{task.description}}</p>
+        <p>{{task.due_date}}</p>
+    </li>
+
     <div class="row">
 
       <div class="col-md-12">

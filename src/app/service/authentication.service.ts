@@ -21,5 +21,15 @@ export class AuthenticationService {
 
   }
 
+  logout() {
+
+    let headers = new Headers({ 'Content-Type': 'application/json'})
+    let options = new RequestOptions({ headers: headers, withCredentials: true })
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/logout'
+
+    return this.http.get(url, options)
+      .map((response:Response) => response.json());
+  }
+
 
 }

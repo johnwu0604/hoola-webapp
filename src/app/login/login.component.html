@@ -1,5 +1,6 @@
 <div class="col-md-6 col-md-offset-3">
   <h2>Login</h2>
+  <p>{{errorMessage}}</p>
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
@@ -22,20 +23,6 @@
     <button type="submit" class="btn btn-success" [disabled]="!form.form.valid">Submit</button>
     <button type="button" class="btn btn-default" (click)="newUser(); form.reset()">New Hero</button>
   </form>
-
-  <div [hidden]="!submitted">
-    <h2>You submitted the following:</h2>
-    <div class="row">
-      <div class="col-xs-3">Email</div>
-      <div class="col-xs-9  pull-left">{{ model.email }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">Password</div>
-      <div class="col-xs-9 pull-left">{{ model.password }}</div>
-    </div>
-    <br>
-    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
-  </div>
 
 </div>
 
