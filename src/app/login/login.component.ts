@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  model: any = {}
+  public model: any = {}
   public errorMessage: string = ""
 
   constructor(

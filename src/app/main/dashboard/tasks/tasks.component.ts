@@ -10,7 +10,8 @@ import { Router } from "@angular/router";
 })
 export class TasksComponent implements OnInit {
 
-  tasks: any = []
+  public tasks: any = []
+  public model: any = {}
 
   constructor(
     private taskService: TaskService,
@@ -21,13 +22,43 @@ export class TasksComponent implements OnInit {
     this.getAllTasks()
   }
 
-  getAllTasks() {
+  public getAllTasks() {
     this.taskService.getAllTasks()
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
             this.tasks = result.tasks
-            console.log(this.tasks)
+          } else {
+            this.router.navigateByUrl('/login');
+          }
+        },
+        error => {
+          console.log(error)
+        })
+  }
+
+  public addNewTask() {
+    this.taskService.addTask(this.model.description, this.model.dueDate)
+      .subscribe(
+        result => {
+          if ( result.user_authenticated ) {
+            this.tasks = result.tasks
+          } else {
+            this.router.navigateByUrl('/login');
+          }
+        },
+        error => {
+          console.log(error)
+        })
+    this.model = []
+  }
+
+  public deleteTask(taskId) {
+    this.taskService.deleteTask(taskId)
+      .subscribe(
+        result => {
+          if ( result.user_authenticated ) {
+            this.tasks = result.tasks
           } else {
             this.router.navigateByUrl('/login');
           }

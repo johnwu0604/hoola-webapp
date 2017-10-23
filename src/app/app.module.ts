@@ -9,7 +9,7 @@ import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './main/sidebar/sidebar.component';
-import { NavbarComponent } from './main/shared/navbar/navbar.component';
+import { NavbarComponent } from './main/navbar/navbar.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 //
 // import { DashboardModule } from './main/dashboard/dashboard.module';

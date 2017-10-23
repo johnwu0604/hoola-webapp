@@ -1,6 +1,26 @@
 <div class="main-content">
   <div class="container-fluid">
-
+    <form (ngSubmit)="addNewTask()">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Task Description" required
+                   [(ngModel)]="model.description" name="description">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Task Due Date (yyyy-mm-dd)" required
+                   [(ngModel)]="model.dueDate" name="due">
+          </div>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-info btn-fill">Add Task</button>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </form>
+    <br>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -19,10 +39,7 @@
                 <td>{{task.description}}</td>
                 <td>{{task.due_date | date:'EEE, MMM d, y'}}</td>
                 <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                  <button type="button" (click)="deleteTask(task.task_id)" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
                     <i class="fa fa-times"></i>
                   </button>
                 </td>
@@ -33,7 +50,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
