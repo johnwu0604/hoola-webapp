@@ -1,110 +1,34 @@
 <div class="main-content">
   <div class="container-fluid">
+    <form (ngSubmit)="addShoppingItem()">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="6 Pack Of Beer" required
+                   [(ngModel)]="model.description" name="description">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-info btn-fill">Add Item</button>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </form>
+    <br>
     <div class="row">
-
       <div class="col-md-12">
         <div class="card">
           <div class="header">
-            <h4 class="title">Shopping List</h4>
-            <p class="category">Shopping list goes here</p>
+            <p class="category">Current Shopping List</p>
           </div>
           <div class="content">
             <div class="table-full-width">
               <table class="table">
                 <tbody>
-                <tr>
-                  <td>
-                    <label class="checkbox">
-                      <input type="checkbox" value="" data-toggle="checkbox">
-                    </label>
-                  </td>
-                  <td>Sirloin steak and spices</td>
+                <tr *ngFor="let item of items">
+                  <td>{{item.description}}</td>
                   <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="checkbox">
-                      <input type="checkbox" value="" data-toggle="checkbox" checked="">
-                    </label>
-                  </td>
-                  <td>Sirloin steak and spices</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="checkbox">
-                      <input type="checkbox" value="" data-toggle="checkbox" checked="">
-                    </label>
-                  </td>
-                  <td>Sirloin steak and spices
-                  </td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="checkbox">
-                      <input type="checkbox" value="" data-toggle="checkbox">
-                    </label>
-                  </td>
-                  <td>Sirloin steak and spices</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="checkbox">
-                      <input type="checkbox" value="" data-toggle="checkbox">
-                    </label>
-                  </td>
-                  <td>Sirloin steak and spices</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="checkbox">
-                      <input type="checkbox" value="" data-toggle="checkbox">
-                    </label>
-                  </td>
-                  <td>Sirloin steak and spices</td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                    <button type="button" (click)="deleteTask(item.item_id)" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
                       <i class="fa fa-times"></i>
                     </button>
                   </td>
@@ -112,17 +36,9 @@
                 </tbody>
               </table>
             </div>
-            <div class="footer">
-              <hr>
-              <div class="stats">
-                <i class="fa fa-history"></i> Clear list
-              </div>
-            </div>
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>
