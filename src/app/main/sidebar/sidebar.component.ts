@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from './sidebar-routes.config';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'sidebar-cmp',
@@ -8,7 +9,7 @@ import { ROUTES } from './sidebar-routes.config';
 })
 export class SidebarComponent implements OnInit {
 
-  public menuItems: any[]
+  public menuItems: any[];
 
   constructor() { }
 
