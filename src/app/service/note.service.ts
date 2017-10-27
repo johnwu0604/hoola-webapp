@@ -6,21 +6,21 @@ import 'rxjs/add/operator/map'
 export class NoteService {
   constructor(private http: Http) { }
 
-  getAllNotes() {
+  getAllNotebooks() {
 
     let headers = new Headers({ 'Content-Type': 'application/json'})
     let options = new RequestOptions({ headers: headers, withCredentials: true })
-    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/notes'
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/notebooks'
 
     return this.http.get(url, options)
       .map((response:Response) => response.json());
   }
 
-  updateNotes(noteId: string, text: string) {
+  updateNotebook(notebookId: string, text: string) {
     let body = JSON.stringify({ 'text': text })
     let headers = new Headers({ 'Content-Type': 'application/json'})
     let options = new RequestOptions({ headers: headers, withCredentials: true })
-    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/notes/' + noteId
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/notebook/' + notebookId
 
     return this.http.put(url, body, options )
       .map((response: Response) => {

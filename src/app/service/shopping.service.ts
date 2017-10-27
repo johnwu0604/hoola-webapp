@@ -10,7 +10,7 @@ export class ShoppingService {
 
     let headers = new Headers({ 'Content-Type': 'application/json'})
     let options = new RequestOptions({ headers: headers, withCredentials: true })
-    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/shopping-items'
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/shopping-list-items'
 
     return this.http.get(url, options)
       .map((response:Response) => response.json());
@@ -20,7 +20,7 @@ export class ShoppingService {
     let body = JSON.stringify({ 'description': description })
     let headers = new Headers({ 'Content-Type': 'application/json'})
     let options = new RequestOptions({ headers: headers, withCredentials: true })
-    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/shopping-item'
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/shopping-list-item'
 
     return this.http.post(url, body, options )
       .map((response: Response) => {
@@ -33,7 +33,7 @@ export class ShoppingService {
 
     let headers = new Headers({ 'Content-Type': 'application/json'})
     let options = new RequestOptions({ headers: headers, withCredentials: true })
-    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/shopping-item/' + itemId
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/shopping-list-item/' + itemId
 
     return this.http.delete(url, options)
       .map((response:Response) => response.json());

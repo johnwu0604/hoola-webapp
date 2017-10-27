@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class NotesComponent implements OnInit {
 
-  private notes: any = ''
+  private notebook: any = ''
 
   constructor(
     private router: Router,
@@ -18,15 +18,15 @@ export class NotesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAllNotes()
+    this.getAllNotebooks()
   }
 
-  public getAllNotes() {
-    this.noteService.getAllNotes()
+  public getAllNotebooks() {
+    this.noteService.getAllNotebooks()
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
-            this.notes = result.notes
+            this.notebook = result.notebooks
           } else {
             this.router.navigateByUrl('/login');
           }
@@ -36,12 +36,12 @@ export class NotesComponent implements OnInit {
         })
   }
 
-  public updateNotes(event) {
-    this.noteService.updateNotes(this.notes.note_id, event.target.value)
+  public updateNotebook(event) {
+    this.noteService.updateNotebook(this.notebook.note_id, event.target.value)
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
-            this.notes = result.notes
+            this.notebook = result.notebooks
           } else {
             this.router.navigateByUrl('/login');
           }
