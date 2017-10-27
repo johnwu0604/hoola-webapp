@@ -1,45 +1,15 @@
 <div class="main-content">
   <div class="container-fluid">
-    <form (ngSubmit)="filterItems()">
-      <div class="row">
-        <div class="col-md-2">
-          <div class="form-group">
-            <select type="text" class="form-control" required
-                    [(ngModel)]="filter.month" name="month">
-              <option *ngFor="let month of months"
-                      [value]="month.id">
-                {{month.name}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <select type="text" class="form-control" required
-                    [(ngModel)]="filter.year" name="year">
-              <option *ngFor="let year of years"
-                      [value]="year.id">
-                {{year.name}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <button type="submit" class="btn btn-info btn-fill">Filter</button>
-        </div>
-      </div>
-    </form>
-    <br>
 
     <form (ngSubmit)="addNewItem()">
       <div class="row">
         <div class="col-md-2">
           <div class="form-group">
             <select type="text" class="form-control" required
-                    [(ngModel)]="model.type" name="type">
+                    [(ngModel)]="model.type_id" name="type">
               <option disabled="true" [ngValue]="default">Select Type</option>
               <option *ngFor="let type of types"
-                      [value]="type.id">
+                      [value]="type.type_id">
                 {{type.name}}
               </option>
             </select>
@@ -48,10 +18,10 @@
         <div class="col-md-3">
           <div class="form-group">
             <select type="text" class="form-control" required
-                    [(ngModel)]="model.category" name="category">
+                    [(ngModel)]="model.category_id" name="category">
               <option disabled="true" [ngValue]="default">Select Category</option>
               <option *ngFor="let category of categories"
-                      [value]="category.id">
+                      [value]="category.category_id">
                 {{category.name}}
               </option>
             </select>
@@ -81,13 +51,39 @@
       </div>
     </form>
     <br>
-    
+
+    <p class="title">Filter Items</p>
     <div class="row">
+      <div class="col-md-2">
+        <div class="form-group">
+          <select type="text" class="form-control" required
+                  [(ngModel)]="filter.month" name="month">
+            <option *ngFor="let month of months"
+                    [value]="month.id">
+              {{month.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <select type="text" class="form-control" required
+                  [(ngModel)]="filter.year" name="year">
+            <option *ngFor="let year of years"
+                    [value]="year.id">
+              {{year.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div *ngFor="let type of types" class="row">
       <div class="col-md-12">
         <div class="card card-plain">
           <div class="header">
-            <h4 class="title">Expenses</h4>
-            <p class="category">Expense go here</p>
+            <h4 class="title">{{type.name}}</h4>
           </div>
           <div class="content table-responsive table-full-width">
             <table class="table table-hover">
@@ -100,69 +96,11 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>June 4, 2017</td>
-                <td>Alcohol and shit</td>
-                <td>Food and Drinks</td>
-                <td>$20.58</td>
-              </tr>
-              <tr>
-                <td>June 4, 2017</td>
-                <td>Alcohol and shit</td>
-                <td>Food and Drinks</td>
-                <td>$20.58</td>
-              </tr>
-              <tr>
-                <td>June 4, 2017</td>
-                <td>Alcohol and shit</td>
-                <td>Food and Drinks</td>
-                <td>$20.58</td>
-              </tr>
-              <tr>
-                <td>June 4, 2017</td>
-                <td>Alcohol and shit</td>
-                <td>Food and Drinks</td>
-                <td>$20.58</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-plain">
-          <div class="header">
-            <h4 class="title">Revenue</h4>
-            <p class="category">Revenue go here</p>
-          </div>
-          <div class="content table-responsive table-full-width">
-            <table class="table table-hover">
-              <thead>
-              <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Amount</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>June 4, 2017</td>
-                <td>Work</td>
-                <td>$2000.56</td>
-              </tr>
-              <tr>
-                <td>June 4, 2017</td>
-                <td>Work</td>
-                <td>$2000.56</td>
-              </tr>
-              <tr>
-                <td>June 4, 2017</td>
-                <td>Work</td>
-                <td>$2000.56</td>
+              <tr *ngFor="let item of ( items | financeFilter: { 'type_name': type.name, 'month': filter.month, 'year': filter.year } ) ">
+                <td>{{item.date | date:'EEE, MMM d, y'}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.category_name}}</td>
+                <td>${{item.amount}}</td>
               </tr>
               </tbody>
             </table>

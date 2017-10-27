@@ -11,10 +11,9 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './main/sidebar/sidebar.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
-//
-// import { DashboardModule } from './main/dashboard/dashboard.module';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
+import { FinanceFilterPipe } from './pipes/finances.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +24,7 @@ import { LoginComponent } from './login/login.component';
     DashboardComponent,
     MainComponent,
     LoginComponent,
+    FinanceFilterPipe
   ],
   imports: [
     BrowserModule,
