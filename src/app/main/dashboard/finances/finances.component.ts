@@ -131,4 +131,19 @@ export class FinancesComponent implements OnInit {
     this.model = []
   }
 
+  public deleteItem(itemId) {
+    this.financeService.deleteItem(itemId)
+      .subscribe(
+        result => {
+          if ( result.user_authenticated ) {
+            this.items = result.finances
+          } else {
+            this.router.navigateByUrl('/login');
+          }
+        },
+        error => {
+          console.log(error)
+        })
+  }
+
 }
