@@ -5,5 +5,5 @@ export const ROUTES: RouteInfo[] = [
   { path: 'calendar', title: 'Calendar',  icon:'pe-7s-date', class: '' },
   { path: 'finances', title: 'Finances',  icon:'pe-7s-cash', class: '' },
   { path: 'shopping', title: 'Shopping',  icon:'pe-7s-shopbag', class: '' },
-  { path: 'notes', title: 'Notes',  icon:'pe-7s-note', class: '' }
+  { path: 'notebooks', title: 'Notebooks',  icon:'pe-7s-note', class: '' }
 ];

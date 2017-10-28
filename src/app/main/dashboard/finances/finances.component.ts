@@ -120,7 +120,7 @@ export class FinancesComponent implements OnInit {
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
-            this.items = result.finances
+            this.items = result.items
           } else {
             this.router.navigateByUrl('/login');
           }
@@ -136,7 +136,7 @@ export class FinancesComponent implements OnInit {
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
-            this.items = result.finances
+            this.items = result.items
           } else {
             this.router.navigateByUrl('/login');
           }

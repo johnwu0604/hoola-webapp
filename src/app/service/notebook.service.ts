@@ -3,14 +3,14 @@ import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class NoteService {
+export class NotebookService {
   constructor(private http: Http) { }
 
-  getAllNotebooks() {
+  getNotebook() {
 
     let headers = new Headers({ 'Content-Type': 'application/json'})
     let options = new RequestOptions({ headers: headers, withCredentials: true })
-    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/notebooks'
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/notebook'
 
     return this.http.get(url, options)
       .map((response:Response) => response.json());

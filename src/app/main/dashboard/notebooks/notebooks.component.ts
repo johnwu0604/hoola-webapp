@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import {NoteService} from "../../../service/note.service";
+import {NotebookService} from "../../../service/notebook.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'note-cmp',
-  templateUrl: 'notes.component.html',
-  styleUrls: ['notes.component.css'],
-  providers: [NoteService]
+  selector: 'notebook-cmp',
+  templateUrl: 'notebooks.component.html',
+  styleUrls: ['notebooks.component.css'],
+  providers: [NotebookService]
 })
-export class NotesComponent implements OnInit {
+export class NotebooksComponent implements OnInit {
 
   private notebook: any = ''
 
   constructor(
     private router: Router,
-    private noteService: NoteService
+    private notebookService: NotebookService
   ) { }
 
   ngOnInit() {
-    this.getAllNotebooks()
+    this.getNotebook()
   }
 
-  public getAllNotebooks() {
-    this.noteService.getAllNotebooks()
+  public getNotebook() {
+    this.notebookService.getNotebook()
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
-            this.notebook = result.notebooks
+            this.notebook = result.notebook
           } else {
             this.router.navigateByUrl('/login');
           }
@@ -37,11 +37,11 @@ export class NotesComponent implements OnInit {
   }
 
   public updateNotebook(event) {
-    this.noteService.updateNotebook(this.notebook.note_id, event.target.value)
+    this.notebookService.updateNotebook(this.notebook.notebook_id, event.target.value)
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
-            this.notebook = result.notebooks
+            this.notebook = result.notebook
           } else {
             this.router.navigateByUrl('/login');
           }

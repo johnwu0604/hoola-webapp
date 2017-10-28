@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { TasksComponent } from './main/dashboard/tasks/tasks.component';
 import { FinancesComponent } from "./main/dashboard/finances/finances.component";
 import { ShoppingComponent } from "./main/dashboard/shopping/shopping.component";
-import { NotesComponent } from "./main/dashboard/notes/notes.component";
+import { NotebooksComponent } from "./main/dashboard/notebooks/notebooks.component";
 import { CalendarComponent } from "./main/dashboard/calendar/calendar.component";
 
 export const MODULE_ROUTES: Route[] =[
@@ -17,7 +17,7 @@ export const MODULE_ROUTES: Route[] =[
       { path: 'tasks', component: TasksComponent },
       { path: 'finances', component: FinancesComponent },
       { path: 'shopping', component: ShoppingComponent },
-      { path: 'notes', component: NotesComponent },
+      { path: 'notebooks', component: NotebooksComponent },
       { path: 'calendar', component: CalendarComponent }
     ]
   }
@@ -29,6 +29,6 @@ export const MODULE_COMPONENTS = [
   TasksComponent,
   FinancesComponent,
   ShoppingComponent,
-  NotesComponent,
+  NotebooksComponent,
   CalendarComponent
 ]
