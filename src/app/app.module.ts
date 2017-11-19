@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
 
@@ -33,6 +33,9 @@ import { FinanceFilterPipe } from './pipes/finances.pipe';
     BrowserAnimationsModule,
     FormsModule,
     MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
     HttpModule,
     RouterModule.forRoot([]),
     RouterModule.forChild(MODULE_ROUTES)

@@ -38,7 +38,8 @@ export class TasksComponent implements OnInit {
   }
 
   public addNewTask() {
-    this.taskService.addTask(this.model.description, this.model.dueDate)
+    var date = new Date(this.model.dueDate)
+    this.taskService.addTask(this.model.description, date.toDateString())
       .subscribe(
         result => {
           if ( result.user_authenticated ) {

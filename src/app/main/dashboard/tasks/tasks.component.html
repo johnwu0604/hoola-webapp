@@ -4,14 +4,19 @@
       <div class="row">
         <div class="col-md-5">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Task Description" required
-                   [(ngModel)]="model.description" name="description">
+            <mat-form-field>
+              <input matInput placeholder="Task Description" [(ngModel)]="model.description" name="description">
+            </mat-form-field>
           </div>
         </div>
         <div class="col-md-5">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Task Due Date (yyyy-mm-dd)" required
-                   [(ngModel)]="model.dueDate" name="due">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Task Due Date (mm/dd/yyy)"
+                     [(ngModel)]="model.dueDate" name="due">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
           </div>
         </div>
         <div class="col-md-2">
