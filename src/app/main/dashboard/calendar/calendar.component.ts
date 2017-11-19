@@ -8,17 +8,9 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 })
 export class CalendarComponent implements OnInit {
 
-  public model: any = {}
-
   constructor() { }
 
   ngOnInit() {
-  }
-
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    var date = new Date(this.model.date)
-    this.model.dateFormatted = date.toDateString()
-
   }
 
 }

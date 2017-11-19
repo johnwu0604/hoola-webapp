@@ -93,8 +93,6 @@ export class FinancesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.filter.month = new Date().getMonth()
-    this.filter.year = new Date().getFullYear()
     this.getAllFinances()
   }
 
@@ -116,7 +114,8 @@ export class FinancesComponent implements OnInit {
   }
 
   public addNewItem() {
-    this.financeService.addItem(this.model.type_id, this.model.category_id, this.model.date, this.model.description, this.model.amount)
+    var formattedDate = new Date(this.model.date)
+    this.financeService.addItem(this.model.type_id, this.model.category_id, formattedDate.toDateString(), this.model.description, this.model.amount)
       .subscribe(
         result => {
           if ( result.user_authenticated ) {

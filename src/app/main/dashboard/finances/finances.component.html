@@ -4,48 +4,42 @@
     <form (ngSubmit)="addNewItem()">
       <div class="row">
         <div class="col-md-2">
-          <div class="form-group">
-            <select type="text" class="form-control" required
-                    [(ngModel)]="model.type_id" name="type">
-              <option disabled="true" [ngValue]="default">Select Type</option>
-              <option *ngFor="let type of types"
-                      [value]="type.type_id">
-                {{type.name}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <select type="text" class="form-control" required
-                    [(ngModel)]="model.category_id" name="category">
-              <option disabled="true" [ngValue]="default">Select Category</option>
-              <option *ngFor="let category of categories"
-                      [value]="category.category_id">
-                {{category.name}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Description" required
-                   [(ngModel)]="model.description" name="description">
-          </div>
+          <mat-form-field>
+            <mat-select placeholder="Select Type" [(ngModel)]="model.type_id" name="type">
+              <mat-option *ngFor="let type of types" [value]="type.type_id">
+                {{ type.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="col-md-2">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Date (yyyy-mm-dd)" required
+          <mat-form-field>
+            <mat-select placeholder="Select Category" [(ngModel)]="model.category_id" name="category">
+              <mat-option *ngFor="let category of categories" [value]="category.category_id">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field>
+            <input matInput placeholder="Task Description" [(ngModel)]="model.description" name="description">
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date (mm/dd/yyy)"
                    [(ngModel)]="model.date" name="date">
-          </div>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </div>
-        <div class="col-md-1">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Amount" required
-                   [(ngModel)]="model.amount" name="amount">
-          </div>
+        <div class="col-md-2">
+          <mat-form-field>
+            <input matInput placeholder="Amount" [(ngModel)]="model.amount" name="amount">
+          </mat-form-field>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
           <button type="submit" class="btn btn-info btn-fill">Add Item</button>
         </div>
       </div>
@@ -55,26 +49,22 @@
     <p class="title">Filter Items</p>
     <div class="row">
       <div class="col-md-2">
-        <div class="form-group">
-          <select type="text" class="form-control" required
-                  [(ngModel)]="filter.month" name="month">
-            <option *ngFor="let month of months"
-                    [value]="month.id">
+        <mat-form-field>
+          <mat-select placeholder="Select month" [(ngModel)]="filter.month" name="month">
+            <mat-option *ngFor="let month of months" [value]="month.id">
               {{month.name}}
-            </option>
-          </select>
-        </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <div class="col-md-2">
-        <div class="form-group">
-          <select type="text" class="form-control" required
-                  [(ngModel)]="filter.year" name="year">
-            <option *ngFor="let year of years"
-                    [value]="year.id">
+        <mat-form-field>
+          <mat-select placeholder="Select year" [(ngModel)]="filter.year" name="year">
+            <mat-option *ngFor="let year of years" [value]="year.id">
               {{year.name}}
-            </option>
-          </select>
-        </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
     <br>

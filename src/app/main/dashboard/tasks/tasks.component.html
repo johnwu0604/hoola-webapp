@@ -3,21 +3,17 @@
     <form (ngSubmit)="addNewTask()">
       <div class="row">
         <div class="col-md-5">
-          <div class="form-group">
-            <mat-form-field>
-              <input matInput placeholder="Task Description" [(ngModel)]="model.description" name="description">
-            </mat-form-field>
-          </div>
+          <mat-form-field>
+            <input matInput placeholder="Task Description" [(ngModel)]="model.description" name="description">
+          </mat-form-field>
         </div>
         <div class="col-md-5">
-          <div class="form-group">
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Task Due Date (mm/dd/yyy)"
-                     [(ngModel)]="model.dueDate" name="due">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Task Due Date (mm/dd/yyy)"
+                   [(ngModel)]="model.dueDate" name="due">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </div>
         <div class="col-md-2">
             <button type="submit" class="btn btn-info btn-fill">Add Task</button>
