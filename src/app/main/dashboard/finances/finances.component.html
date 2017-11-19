@@ -3,7 +3,7 @@
 
     <form (ngSubmit)="addNewItem()">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-4">
           <mat-form-field>
             <mat-select placeholder="Select Type" [(ngModel)]="model.type_id" name="type">
               <mat-option *ngFor="let type of types" [value]="type.type_id">
@@ -12,7 +12,7 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
           <mat-form-field>
             <mat-select placeholder="Select Category" [(ngModel)]="model.category_id" name="category">
               <mat-option *ngFor="let category of categories" [value]="category.category_id">
@@ -21,12 +21,12 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
           <mat-form-field>
             <input matInput placeholder="Task Description" [(ngModel)]="model.description" name="description">
           </mat-form-field>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
           <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="Date (mm/dd/yyy)"
                    [(ngModel)]="model.date" name="date">
@@ -34,12 +34,12 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
           <mat-form-field>
             <input matInput placeholder="Amount" [(ngModel)]="model.amount" name="amount">
           </mat-form-field>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
           <button type="submit" class="btn btn-info btn-fill">Add Item</button>
         </div>
       </div>
