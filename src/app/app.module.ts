@@ -6,6 +6,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { CalendarModule } from 'angular-calendar';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
 
@@ -37,6 +39,8 @@ import { FinanceFilterPipe } from './pipes/finances.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    NgbModule.forRoot(),
+    CalendarModule.forRoot(),
     HttpModule,
     RouterModule.forRoot([]),
     RouterModule.forChild(MODULE_ROUTES)
