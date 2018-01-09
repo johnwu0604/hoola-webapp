@@ -1,0 +1,71 @@
+<div class="col-md-6 col-md-offset-3">
+  <h2>Create Account</h2>
+  <p class="error-message">{{errorMessage}}</p>
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input type="text" class="form-control" id="first_name"
+             required
+             [(ngModel)]="model.first_name" name="first_name"
+             #first_name="ngModel">
+      <div [hidden]="first_name.valid || first_name.pristine"
+           class="alert alert-danger">
+        First name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input type="text" class="form-control" id="last_name"
+             required
+             [(ngModel)]="model.last_name" name="last_name"
+             #last_name="ngModel">
+      <div [hidden]="last_name.valid || last_name.pristine"
+           class="alert alert-danger">
+        Last name is required
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email"
+             required
+             [(ngModel)]="model.email" name="email"
+             #email="ngModel">
+      <div [hidden]="email.valid || email.pristine"
+           class="alert alert-danger">
+        Email is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password"
+             required
+             [(ngModel)]="model.password" name="password"
+             #password="ngModel">
+      <div [hidden]="password.valid || password.pristine"
+           class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password_confirm">Confirm Password</label>
+      <input type="password" class="form-control" id="password_confirm"
+             required
+             [(ngModel)]="model.password_confirm" name="password_confirm"
+             #password_confirm="ngModel">
+      <div [hidden]="password_confirm.valid || password_confirm.pristine"
+           class="alert alert-danger">
+        Password confirmation is required
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!form.form.valid">Submit</button>
+  </form>
+
+</div>
+

@@ -16,12 +16,12 @@
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="text" class="form-control" id="password"
+      <input type="password" class="form-control" id="password"
              [(ngModel)]="model.password" name="password">
     </div>
-
-    <button type="submit" class="btn btn-success" [disabled]="!form.form.valid">Submit</button>
+    <button type="submit" class="btn btn-blue" [disabled]="!form.form.valid">Submit</button>
   </form>
-
+  <br>
+  <button (click)="onSignUpClick()" class="btn btn-gray">Create Account</button>
 </div>
 

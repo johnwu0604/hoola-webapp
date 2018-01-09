@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         result => {
           if (result.login_success) {
-            this.router.navigateByUrl('/main');
+            this.router.navigateByUrl('/main')
           } else {
             this.errorMessage = "Invalid email or password. Please try again."
           }
@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
         error => {
           console.log(error)
         })
+  }
+
+  onSignUpClick() {
+    this.router.navigateByUrl('/signup')
   }
 
   logout() {
