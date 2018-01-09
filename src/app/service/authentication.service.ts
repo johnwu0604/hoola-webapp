@@ -21,6 +21,25 @@ export class AuthenticationService {
 
   }
 
+  signup(firstName: string, lastName: string, email: string, password: string) {
+    let body = JSON.stringify({
+      'first_name': firstName,
+      'last_name': lastName,
+      'email': email,
+      'password': password
+    })
+    let headers = new Headers({ 'Content-Type': 'application/json'})
+    let options = new RequestOptions({ headers: headers, withCredentials: true })
+    let url = 'http://hoolaserverdev-env.iaryuqqehh.us-west-2.elasticbeanstalk.com/signup'
+
+    return this.http.post(url, body, options )
+      .map((response: Response) => {
+        let result = response.json()
+        return result
+      })
+
+  }
+
   logout() {
 
     let headers = new Headers({ 'Content-Type': 'application/json'})

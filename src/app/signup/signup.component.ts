@@ -27,21 +27,21 @@ export class SignupComponent implements OnInit {
       this.model.password = ""
       this.model.password_confirm = ""
       return
+    } else {
+      this.authenticationService.signup(this.model.first_name, this.model.last_name, this.model.email, this.model.password)
+        .subscribe(
+          result => {
+            if (result.signup_success) {
+              this.router.navigateByUrl('/main');
+            } else {
+              this.errorMessage = "This account already exists. Please try again."
+              this.model = ""
+            }
+          },
+          error => {
+            console.log(error)
+          })
     }
-    console.log('ffff')
-
-    // this.authenticationService.login(this.model.email, this.model.password)
-    //   .subscribe(
-    //     result => {
-    //       if (result.login_success) {
-    //         this.router.navigateByUrl('/main');
-    //       } else {
-    //         this.errorMessage = "Invalid email or password. Please try again."
-    //       }
-    //     },
-    //     error => {
-    //       console.log(error)
-    //     })
   }
 
   logout() {
