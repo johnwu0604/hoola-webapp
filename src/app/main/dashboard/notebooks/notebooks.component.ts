@@ -6,11 +6,12 @@ import {Router} from "@angular/router";
   selector: 'notebook-cmp',
   templateUrl: 'notebooks.component.html',
   styleUrls: ['notebooks.component.css'],
-  providers: [NotebookService]
+  providers: [ NotebookService ]
 })
 export class NotebooksComponent implements OnInit {
 
-  private notebook: any = ''
+  private notebooks: any = ''
+  public model: any = {}
 
   constructor(
     private router: Router,
@@ -18,15 +19,50 @@ export class NotebooksComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getNotebook()
+    this.getNotebooks()
   }
 
-  public getNotebook() {
-    this.notebookService.getNotebook()
+  public getNotebooks() {
+    this.notebookService.getNotebooks()
       .subscribe(
         result => {
           if ( result.user_authenticated ) {
-            this.notebook = result.notebook
+            this.notebooks = result.notebooks
+          } else {
+            this.router.navigateByUrl('/login')
+          }
+        },
+        error => {
+          console.log(error)
+        })
+  }
+
+  public openNotebook(notebookId) {
+    this.router.navigateByUrl('/main/notebooks/' + notebookId)
+  }
+
+  public addNotebook() {
+    this.notebookService.addNotebook(this.model.name)
+      .subscribe(
+        result => {
+          if ( result.user_authenticated ) {
+            this.notebooks = result.notebooks
+          } else {
+            this.router.navigateByUrl('/login');
+          }
+        },
+        error => {
+          console.log(error)
+        })
+    this.model = []
+  }
+
+  public deleteNotebook(notebookId) {
+    this.notebookService.deleteNotebook(notebookId)
+      .subscribe(
+        result => {
+          if ( result.user_authenticated ) {
+            this.notebooks = result.notebooks
           } else {
             this.router.navigateByUrl('/login');
           }
@@ -36,19 +72,5 @@ export class NotebooksComponent implements OnInit {
         })
   }
 
-  public updateNotebook(event) {
-    this.notebookService.updateNotebook(this.notebook.notebook_id, event.target.value)
-      .subscribe(
-        result => {
-          if ( result.user_authenticated ) {
-            this.notebook = result.notebook
-          } else {
-            this.router.navigateByUrl('/login');
-          }
-        },
-        error => {
-          console.log(error)
-        })
-  }
 
 }

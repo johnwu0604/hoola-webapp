@@ -1,0 +1,15 @@
+<div class="main-content">
+  <div class="container-fluid" class="col-md-12">
+    <mat-card-title>{{notebook.name}}</mat-card-title>
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field style="width:100%;">
+          <textarea rows="25" (change)="updateNotebook($event)" matInput>{{notebook.text}}</textarea>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="backToNotebooks()" mat-button>BACK TO ALL NOTES</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

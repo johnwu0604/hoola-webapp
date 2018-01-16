@@ -5,6 +5,7 @@ import { TasksComponent } from './main/dashboard/tasks/tasks.component'
 import { FinancesComponent } from './main/dashboard/finances/finances.component'
 import { ShoppingComponent } from './main/dashboard/shopping/shopping.component'
 import { NotebooksComponent } from './main/dashboard/notebooks/notebooks.component'
+import { NoteComponent } from './main/dashboard/notebooks/note/note.component'
 import { CalendarComponent } from './main/dashboard/calendar/calendar.component'
 import { SignupComponent} from './signup/signup.component'
 
@@ -20,6 +21,7 @@ export const MODULE_ROUTES: Route[] =[
       { path: 'finances', component: FinancesComponent },
       { path: 'shopping', component: ShoppingComponent },
       { path: 'notebooks', component: NotebooksComponent },
+      { path: 'notebooks/:id', component: NoteComponent },
       { path: 'calendar', component: CalendarComponent }
     ]
   }
@@ -32,5 +34,6 @@ export const MODULE_COMPONENTS = [
   FinancesComponent,
   ShoppingComponent,
   NotebooksComponent,
-  CalendarComponent
+  CalendarComponent,
+  NoteComponent
 ]

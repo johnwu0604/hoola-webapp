@@ -1,19 +1,50 @@
 <div class="main-content">
-  <div class="container-fluid" class="col-md-12">
-    <mat-card-title>{{notebook.name}}</mat-card-title>
-    <mat-card>
-      <mat-card-content>
-        <mat-form-field style="width:100%;">
-          <textarea rows="25" (change)="updateNotebook($event)" matInput>{{notebook.text}}</textarea>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>BACK TO ALL NOTES</button>
-        <button mat-button>SAVE</button>
-      </mat-card-actions>
-    </mat-card>
+  <div class="container-fluid">
+    <form (ngSubmit)="addNotebook()">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Name" required
+                   [(ngModel)]="model.name" name="name">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-info btn-fill">Add New Notebook</button>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </form>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <p class="category">All Notebooks</p>
+          </div>
+          <div class="content">
+            <div class="table-full-width">
+              <table class="table">
+                <tbody>
+                <tr *ngFor="let notebook of notebooks">
+                  <td>{{notebook.name}}</td>
+                  <td class="td-actions text-right">
+                    <button type="button" (click)="openNotebook(notebook.notebook_id)" rel="tooltip" title="Open Notebook" class="btn btn-info btn-simple btn-xs">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button type="button" (click)="deleteNotebook(notebook.notebook_id)" rel="tooltip" title="Delete Notebook" class="btn btn-danger btn-simple btn-xs">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 
-<!--<textarea id="some-value" rows="30" style="width:100%;" (change)="updateNotebook($event)">{{notebook.text}}</textarea>-->
+
